@@ -312,3 +312,17 @@ section + section { border-top: 1px solid var(--hairline); }
 .site-footer p { margin: 0; }
 .site-footer a { color: var(--muted); }
 .site-footer a:hover { color: var(--text); }
+
+/* === Reveal-on-scroll ======================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 240ms ease, transform 240ms ease;
+}
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
