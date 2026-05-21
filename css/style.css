@@ -172,3 +172,36 @@ section + section { border-top: 1px solid var(--hairline); }
   .nav-menu a { display: block; padding: 12px var(--pad-x); }
   .nav-cta { order: 3; }
 }
+
+/* === Hero ==================================================== */
+.hero { padding-top: calc(var(--pad-section) + 16px); padding-bottom: var(--pad-section); }
+.hero .eyebrow { margin-bottom: 14px; }
+.hero h1 { margin-bottom: 14px; }
+.hero-sub {
+  font-size: clamp(18px, 2.2vw, 22px);
+  color: var(--text);
+  max-width: 620px;
+  margin: 0 0 10px;
+}
+.hero-meta { color: var(--muted); font-size: 15px; margin: 0 0 28px; }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin: 0 0 32px;
+}
+.chips li {
+  font-size: 13px;
+  color: var(--muted);
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.hero-cta { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* Hero has no top divider (it follows the sticky header) */
+.hero + section { border-top: 1px solid var(--hairline); }
+.hero { border-top: 0; }
