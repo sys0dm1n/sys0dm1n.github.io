@@ -2,7 +2,7 @@
 
 **Date:** 2026-05-21
 **Owner:** Alain C. (`@sys0dm1n`)
-**Status:** Approved design, ready for implementation plan
+**Status:** Approved design, content folded in from LinkedIn export, ready for implementation
 **Live site:** https://sys0dm1n.github.io/
 
 ## Context
@@ -16,24 +16,27 @@ Decisions reached during brainstorming:
 - **Stack:** Custom static site, no Jekyll, no build step, no frameworks.
 - **Structure:** Multi-file static (`index.html` + `css/` + `js/`), content authored directly in semantic HTML.
 - **Booking:** Proton Calendar booking link, outbound anchor only — no form, no email on the page.
+- **Public-name handling:** "Alain C." everywhere on the rendered page (initialized last name kept for privacy; LinkedIn carries the full name via the linked profile).
+- **Certifications section:** dropped — none of the LinkedIn-listed items are formal industry certifications, so the Executive Light aesthetic is better served by omitting the heading than by listing weak signals.
 
 ## Goals
 
-- A single-page site that reads as the work of a senior, experienced DevOps leader.
+- A single-page site that reads as the work of a senior, experienced DevOps leader specialised in remote/B2B.
 - Clear, scannable hero with a primary `Book a meeting` CTA.
-- All current CV content preserved, restructured into modern sections.
+- All current LinkedIn content preserved or condensed; nothing inflated.
 - Zero build complexity: edits are direct HTML/CSS/JS file edits; GitHub Pages serves the repo root as-is.
 - Bot-safe contact: no email or form on the page; spam protection delegated to Proton Calendar.
 - Accessibility: WCAG AA contrast, keyboard navigable, semantic markup.
 
 ## Non-goals
 
-- Interactive terminal widget, easter eggs, monospace/"geeky" stylistic flourishes (cut after the direction pivot).
-- Blog, writing index, projects gallery, homelab section (out of scope).
+- Interactive terminal widget, easter eggs, monospace/"geeky" stylistic flourishes (cut during brainstorming).
+- Blog, writing index, projects gallery, homelab section (out of scope for v1).
 - Resume PDF download (cut).
-- Email exposure or contact form (cut for bot safety).
+- Email or phone exposure, contact form (cut for bot safety).
 - Backend, build tooling, frameworks, or third-party JS beyond Google Analytics.
 - Live GitHub stats embed (cut; GitHub is linked but no auto-updating card).
+- Certifications block — see Context.
 
 ## Architecture
 
@@ -70,9 +73,9 @@ Order is top-to-bottom on a single page.
 
 - Eyebrow label (small caps, muted): `DEVOPS TEAM LEAD`.
 - Heading `<h1>`: `Alain C.`
-- Subhead (positioning sentence): `Building reliable cloud platforms and the teams behind them.`
-- Meta line: `Beirut · Berlin · 10+ years`.
-- Tech chip row (subtle, deemphasised): `AWS · Kubernetes · Terraform · Docker · Ansible · Linux`.
+- Subhead (positioning sentence): `Remote-first DevOps leadership. Building reliable cloud platforms — and the teams behind them.`
+- Meta line: `Beirut · Berlin · 15+ years`.
+- Tech chip row (subtle, deemphasised): `AWS · Azure · Kubernetes · Terraform · Ansible · ArgoCD · Docker · Linux`.
 - CTAs:
   - **Primary:** `Book a meeting` → Proton URL, `target="_blank"`, `rel="noopener noreferrer"`.
   - **Secondary:** `LinkedIn` → `https://www.linkedin.com/in/alainch`.
@@ -80,75 +83,83 @@ Order is top-to-bottom on a single page.
 
 ### 3. About
 
-- The existing summary paragraph, lightly tightened for tone (no factual changes).
-- Stats strip below the paragraph (large number + small label):
-  - `10+` years
-  - `4` teams led
+- Paragraph (folded from the LinkedIn summary, tightened):
+  > DevOps Team Lead with 15+ years building and leading high-performing remote teams across Europe and the Middle East. I turn infrastructure into a competitive advantage — automating CI/CD pipelines, scaling cloud environments on AWS and Azure, and enabling dev teams to ship faster with confidence. Remote-first by design: I lead fully distributed teams across time zones on a foundation of trust, async communication, and strong engineering culture. Open to DevOps Lead, Head of DevOps, and DevOps Architect roles — remote or hybrid, B2B or employee.
+- Stats strip below the paragraph (large number + small label) — concrete impact metrics:
+  - `15+` years
+  - `40%` AWS savings
+  - `50%` less downtime
   - `3` languages
-  - `3` certifications
 
 ### 4. Selected highlights
 
-A 2×2 grid of impact cards drawn from existing achievements:
+A 2×2 grid of impact cards drawn from the LinkedIn summary's quantified achievements:
 
-1. **Cut deployment time & AWS cost** — optimised infrastructure and consolidated databases (serVme).
-2. **EKS + GitOps migration** — moved from traditional architecture to fully automated CI/CD pipelines (serVme).
-3. **Hybrid-cloud migration** — services across AWS, OVH, and Heroku (Keeward).
-4. **Built & led DevOps teams** — recruitment, daily standups, retros, 1:1s, mentoring (doctorly + serVme).
+1. **Cut deployment cycles** — 1 month → 2 days.
+2. **40% AWS cost reduction** — through infrastructure optimisation and consolidation.
+3. **50% less downtime · 80% better customer availability** — via resilient architecture and proactive ops.
+4. **Built &amp; led remote DevOps teams** — from the ground up, across Europe and the Middle East.
 
 On mobile, the grid collapses to a single column.
 
 ### 5. Experience
 
-Plain vertical list of all five roles in reverse-chronological order. For each: company, title, dates, location, followed by short bullet groups for responsibilities and achievements (re-using the existing copy). No timeline graphic, no decorative icons.
+Plain vertical list. The seven most recent roles get full bullet detail; the six earlier ones are condensed to one-line entries under an "Earlier roles" sub-heading. No timeline graphic, no decorative icons.
 
-Roles:
+**Detailed roles (reverse-chronological):**
 
-1. **doctorly** — DevOps Team Lead — Mar 2022 – Present — Berlin
-2. **serVme** — Lead DevOps Engineer — Dec 2020 – Mar 2022 — Beirut
-3. **CMA CGM** — Digital Tech Lead — Feb 2020 – Nov 2020 — Beirut
-4. **Inimoney Fintech** — Head of Quality Assurance — Dec 2018 – Jan 2020 — Beirut
-5. **Keeward Group** — DevOps System Engineer — Jun 2012 – Jun 2018 — Beirut
+1. **doctorly** — DevOps Team Lead — Feb 2026 – Present — Berlin, Germany *(returning engagement, distinct from the 2022–2025 stint below)*
+2. **CompuGroup Medical SE & Co. KGaA** — DevOps Tech Lead — May 2025 – Jan 2026 — Germany
+3. **doctorly** — DevOps Team Lead — Mar 2022 – Apr 2025 — Berlin, Germany
+4. **serVme** — Lead DevOps Engineer — Dec 2020 – Mar 2022 — Beirut, Lebanon
+5. **CMA CGM** — Digital Tech Lead — Feb 2020 – Nov 2020 — Beirut, Lebanon
+6. **Inimoney Fintech** — Head of Quality Assurance / DevOps Team Lead — Jul 2018 – Jan 2020 — Beirut, Lebanon *(dual role at the same company)*
+7. **Keeward Group** — DevOps System Engineer / IT Manager — Jun 2012 – Jun 2018 — Beirut, Lebanon *(dual role at the same company)*
+
+**Earlier roles (condensed, single-line each):**
+
+- **ARUMTEC** — Linux System Engineer (for ESMA) — Jan 2012 – May 2012 — Paris, France
+- **Sollan** — IT Manager — May 2010 – Dec 2011
+- **North Caspian Operating Company** — Service Desk Administrator — Nov 2009 – May 2010
+- **Xnet Conseils** — IT Manager — Sep 2008 – Sep 2009
+- **Orange Business Services** — Network Support Technician — Jul 2008 – Aug 2008
+- **Lycée Sainte Thérèse** — System and Network Administrator — Jan 2008 – Apr 2008
+
+Bullet content for the detailed roles is specified verbatim in the implementation plan.
 
 ### 6. Skills
 
 Categorised columns, plain text labels — no bars, no scores, no badges:
 
-- **Cloud** — AWS
-- **Orchestration** — Kubernetes, Docker
-- **Infrastructure as code** — Terraform, Ansible
-- **CI/CD & GitOps** — GitLab CI/CD, Jenkins, GitOps
-- **Systems** — Linux administration, Git
-- **Leadership** — Team management, Agile (Scrum/Kanban), Hiring, Mentoring
+- **Cloud** — AWS, Azure
+- **Orchestration & GitOps** — Kubernetes (EKS, AKS), Docker, Helm, ArgoCD
+- **Infrastructure as code** — Terraform (umbrella modules), Ansible
+- **CI/CD & Security** — GitLab CI/CD, GitHub Actions, Jenkins, SAST / dependency / secret / container scanning, C5 (BSI) compliance
+- **Observability** — Prometheus, Grafana, CloudWatch
+- **Systems** — Linux administration, Git, Nginx, APISIX
+- **Leadership** — Remote team management, Agile (Scrum/Kanban), Hiring, Mentoring, B2B engagements
 
-### 7. Education & Certifications
+### 7. Education
 
-Two-column compact block on desktop, stacked on mobile.
-
-Education:
+Single-column block. Certifications heading and certifications block are intentionally omitted.
 
 - **Conservatoire National des Arts et Métiers** — Analysis and Conception of System Information and Decisions, Computer Science (2008 – 2009)
 - **IB Formation, France** — VMware vSphere 4.1 (2011)
 - **DIAFOR, France** — System and Network Administration (2007 – 2008)
 - **Université de Rennes I** — DEUG, Science (2003 – 2005)
-
-Certifications (rendered as restrained pill badges, no logos):
-
-- Linux Foundation Certified System Administrator (LFCS)
-- AWS Certified Solutions Architect – Associate
-- Certified Kubernetes Administrator (CKA)
+- **Collège De la Sagesse** — High School Diploma, Mathematics (1984 – 2001)
 
 ### 8. Languages
 
-A single inline line below certifications:
-**Arabic** (native) · **French** (native) · **English** (professional).
+A single inline line below Education:
+**Lebanese** (native) · **French** (native) · **English** (professional working).
 
 ### 9. Contact
 
-- Short closing line: "Open to senior DevOps and platform leadership conversations."
+- Short closing line: "Open to DevOps Lead, Head of DevOps, and DevOps Architect roles — remote, hybrid, B2B or employee."
 - Primary CTA: `Book a meeting`.
 - Secondary links: `LinkedIn` and `GitHub @sys0dm1n`.
-- No email anywhere — neither visible nor in source.
+- No email, no phone — neither visible nor in source.
 
 ### 10. Footer
 
@@ -169,8 +180,8 @@ Single line: `© 2026 Alain C.` left; `LinkedIn · GitHub` right.
 - **Description:**
 
   > 30-minute video meeting. Happy to talk about:
-  > – DevOps engineering & platform leadership roles
-  > – Kubernetes / AWS / Terraform consulting & advisory
+  > – DevOps engineering & platform leadership roles (remote / hybrid / B2B)
+  > – Kubernetes / AWS / Azure / Terraform consulting & advisory
   > – Hiring, team building, mentoring
   > – Open-source and community collaboration
   >
@@ -224,7 +235,7 @@ Responsive breakpoints:
 - Visible focus rings on all interactive elements — never `outline: none` without an alternative.
 - Skip-to-content link as the first focusable element.
 - `<title>`: `Alain C. — DevOps Team Lead`.
-- `<meta name="description">`: one-sentence professional summary.
+- `<meta name="description">`: "DevOps Team Lead with 15+ years building reliable cloud platforms and remote teams. Specialised in Remote DevOps & B2B."
 - OpenGraph + Twitter card tags with `og-image.png`, so LinkedIn/Slack previews look professional.
 - `<html lang="en">`.
 - Lighthouse target: ≥ 95 on Performance, Accessibility, Best Practices, and SEO.
@@ -243,9 +254,11 @@ Run before merge:
 - [ ] No console errors, no 404s in the Network panel.
 - [ ] GA tag fires (Network panel shows a request to `google-analytics.com` / `googletagmanager.com`).
 - [ ] Lighthouse Accessibility ≥ 95.
-- [ ] View source: no email address visible anywhere in HTML.
+- [ ] View source: no email address and no phone number anywhere in HTML.
+- [ ] Experience section contains exactly 7 detailed roles and 6 condensed earlier roles.
+- [ ] No "Certifications" heading anywhere in the rendered page.
 - [ ] LinkedIn Post Inspector shows the correct OG image and description.
 
 ## Open items
 
-None — the design is fully specified. The Proton booking page title and description in this spec are recommendations the user can adjust inside Proton without changing any site code.
+None — the design is fully specified.

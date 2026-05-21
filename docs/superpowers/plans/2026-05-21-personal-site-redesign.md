@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Replace the Jekyll/hacker-theme CV at sys0dm1n.github.io with a single-page Executive Light personal landing site, including a bot-safe "Book a meeting" CTA wired to a Proton Calendar URL.
+**Goal:** Replace the Jekyll/hacker-theme CV at sys0dm1n.github.io with a single-page Executive Light personal landing site that folds in the user's LinkedIn content, including a bot-safe "Book a meeting" CTA wired to a Proton Calendar URL.
 
 **Architecture:** Multi-file static site served by GitHub Pages with `.nojekyll`. `index.html` holds all semantic content. `css/style.css` defines design tokens and layout. `js/main.js` adds the mobile-menu toggle, scroll-spy active nav link, and `prefers-reduced-motion`-gated reveal-on-scroll. No frameworks, no build step, no third-party JS except the existing Google Analytics tag.
 
@@ -80,7 +80,7 @@ mkdir -p css js
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alain C. — DevOps Team Lead</title>
-  <meta name="description" content="DevOps Team Lead with 10+ years building reliable cloud platforms and the teams behind them. AWS · Kubernetes · Terraform.">
+  <meta name="description" content="DevOps Team Lead with 15+ years building reliable cloud platforms and remote teams. Specialised in Remote DevOps & B2B.">
   <link rel="stylesheet" href="css/style.css">
 
   <!-- Google Analytics (existing tag) -->
@@ -399,12 +399,12 @@ git commit -m "Add sticky nav with Book-a-meeting CTA"
       <div class="container">
         <p class="eyebrow">DevOps Team Lead</p>
         <h1 id="hero-title">Alain C.</h1>
-        <p class="hero-sub">Building reliable cloud platforms and the teams behind them.</p>
-        <p class="hero-meta">Beirut · Berlin · 10+ years</p>
+        <p class="hero-sub">Remote-first DevOps leadership. Building reliable cloud platforms — and the teams behind them.</p>
+        <p class="hero-meta">Beirut · Berlin · 15+ years</p>
 
         <ul class="chips" aria-label="Core technologies">
-          <li>AWS</li><li>Kubernetes</li><li>Terraform</li>
-          <li>Docker</li><li>Ansible</li><li>Linux</li>
+          <li>AWS</li><li>Azure</li><li>Kubernetes</li><li>Terraform</li>
+          <li>Ansible</li><li>ArgoCD</li><li>Docker</li><li>Linux</li>
         </ul>
 
         <div class="hero-cta">
@@ -459,11 +459,16 @@ git commit -m "Add sticky nav with Book-a-meeting CTA"
 - [ ] **Step 3: Verify the hero renders with the correct copy**
 
 ```bash
-curl -s http://localhost:8080/ | grep -F "Building reliable cloud platforms and the teams behind them."
+curl -s http://localhost:8080/ | grep -F "Remote-first DevOps leadership. Building reliable cloud platforms — and the teams behind them."
 ```
 Expected: one matching line.
 
-In the browser: hero shows eyebrow, large name, positioning sentence, location/years meta line, 6 chips, and two CTAs (blue primary + outline secondary). The "Book a meeting" anchor opens in a new tab.
+```bash
+curl -s http://localhost:8080/ | grep -c '<li>Azure</li>'
+```
+Expected: `1`.
+
+In the browser: hero shows eyebrow, large name, positioning sentence, location/years meta line ("Beirut · Berlin · 15+ years"), 8 chips, and two CTAs (blue primary + outline secondary). The "Book a meeting" anchor opens in a new tab.
 
 - [ ] **Step 4: Commit**
 
@@ -486,18 +491,14 @@ git commit -m "Add hero section"
       <div class="container">
         <h2 id="about-title">About</h2>
         <p>
-          Dynamic, results-driven DevOps Team Lead with 10+ years leading
-          technical teams and optimising cloud infrastructure. Adept across
-          Kubernetes, Ansible, Terraform, AWS, and GitLab CI/CD. Focused on
-          managing cross-functional teams, improving automation workflows, and
-          building resilient systems that support reliable, scalable operations.
+          DevOps Team Lead with 15+ years building and leading high-performing remote teams across Europe and the Middle East. I turn infrastructure into a competitive advantage — automating CI/CD pipelines, scaling cloud environments on AWS and Azure, and enabling dev teams to ship faster with confidence. Remote-first by design: I lead fully distributed teams across time zones on a foundation of trust, async communication, and strong engineering culture. Open to DevOps Lead, Head of DevOps, and DevOps Architect roles — remote or hybrid, B2B or employee.
         </p>
 
         <dl class="stats" aria-label="At a glance">
-          <div><dt>10+</dt><dd>years</dd></div>
-          <div><dt>4</dt><dd>teams led</dd></div>
+          <div><dt>15+</dt><dd>years</dd></div>
+          <div><dt>40%</dt><dd>AWS savings</dd></div>
+          <div><dt>50%</dt><dd>less downtime</dd></div>
           <div><dt>3</dt><dd>languages</dd></div>
-          <div><dt>3</dt><dd>certifications</dd></div>
         </dl>
       </div>
     </section>
@@ -533,7 +534,12 @@ curl -s http://localhost:8080/ | grep -F 'id="about-title"'
 ```
 Expected: one matching line.
 
-Browser: About section appears below the hero with a subdivider hairline, summary paragraph, and a 4-up stats strip that wraps to 2×2 below 560px.
+```bash
+curl -s http://localhost:8080/ | grep -F "15+ years building and leading high-performing remote teams"
+```
+Expected: one matching line.
+
+Browser: About section appears below the hero with a subdivider hairline, summary paragraph emphasising 15+ years and remote leadership, and a 4-up stats strip (15+ / 40% / 50% / 3) that wraps to 2×2 below 560px.
 
 - [ ] **Step 4: Commit**
 
@@ -557,20 +563,20 @@ git commit -m "Add About section with stats strip"
         <h2 id="highlights-title">Selected highlights</h2>
         <ul class="cards">
           <li class="card">
-            <h3>Cut deployment time &amp; AWS cost</h3>
-            <p>Optimised infrastructure and consolidated databases at serVme, reducing deploy time and recurring spend.</p>
+            <h3>Cut deployment cycles 1 month → 2 days</h3>
+            <p>Replaced slow, manual release processes with automated CI/CD and GitOps so engineering teams could ship multiple times a week instead of once a month.</p>
           </li>
           <li class="card">
-            <h3>EKS + GitOps migration</h3>
-            <p>Moved a traditional architecture to fully automated CI/CD pipelines on Amazon EKS with Jenkins and GitOps.</p>
+            <h3>40% AWS cost reduction</h3>
+            <p>Cut recurring cloud spend by ~40% through infrastructure optimisation: right-sized compute, consolidated databases, and pruned unused services.</p>
           </li>
           <li class="card">
-            <h3>Hybrid-cloud migration</h3>
-            <p>Migrated services to a hybrid architecture spanning AWS, OVH, and Heroku, with caching via Redis and Varnish.</p>
+            <h3>50% less downtime · 80% better availability</h3>
+            <p>Improved customer-facing reliability with resilient architecture, autoscaling, and proactive operations across production environments.</p>
           </li>
           <li class="card">
-            <h3>Built &amp; led DevOps teams</h3>
-            <p>Recruitment, daily standups, retrospectives, and 1:1s across multiple teams at doctorly and serVme.</p>
+            <h3>Built &amp; led remote DevOps teams</h3>
+            <p>Grew distributed teams from the ground up across Europe and the Middle East — hiring, structured 1:1s, retros, and mentoring focused on engineer ownership.</p>
           </li>
         </ul>
       </div>
@@ -607,13 +613,18 @@ curl -s http://localhost:8080/ | grep -c '<li class="card">'
 ```
 Expected: `4`.
 
-Browser: a 2×2 grid of four cards under a "Selected highlights" heading; collapses to one column below 720px.
+```bash
+curl -s http://localhost:8080/ | grep -F "Cut deployment cycles 1 month"
+```
+Expected: one matching line.
+
+Browser: a 2×2 grid of four impact cards under a "Selected highlights" heading; collapses to one column below 720px.
 
 - [ ] **Step 4: Commit**
 
 ```bash
 git add index.html css/style.css
-git commit -m "Add Selected highlights section"
+git commit -m "Add Selected highlights with quantified impact cards"
 ```
 
 ---
@@ -622,6 +633,8 @@ git commit -m "Add Selected highlights section"
 
 **Files:**
 - Modify: `index.html`, `css/style.css`
+
+This section lists **7 detailed roles** in reverse-chronological order, followed by an **"Earlier roles"** sub-heading with 6 condensed one-line entries.
 
 - [ ] **Step 1: Append after the Highlights section**
 
@@ -633,19 +646,58 @@ git commit -m "Add Selected highlights section"
         <article class="role">
           <header>
             <h3>doctorly — DevOps Team Lead</h3>
-            <p class="role-meta">Mar 2022 – Present · Berlin, Germany</p>
+            <p class="role-meta">Feb 2026 – Present · Berlin, Germany</p>
           </header>
-          <p class="role-label">Responsibilities</p>
+          <p>Returning to doctorly to continue evolving the platform built during the 2022–2025 stint below: Kubernetes on AWS, multi-environment Terraform, GitLab CI/CD with security scanning, and ArgoCD-driven deployments.</p>
+        </article>
+
+        <article class="role">
+          <header>
+            <h3>CompuGroup Medical SE &amp; Co. KGaA — DevOps Tech Lead</h3>
+            <p class="role-meta">May 2025 – Jan 2026 · Germany</p>
+          </header>
+          <p class="role-label">Highlights</p>
           <ul class="role-list">
-            <li>Lead a DevOps team — daily standups, retrospectives, and 1:1s.</li>
-            <li>Spearhead recruitment to keep the team staffed with strong engineers.</li>
-            <li>Oversee infrastructure and codebase health, enforcing repository best practices.</li>
+            <li>Built the Azure cloud infrastructure entirely from scratch.</li>
+            <li>Designed a Terraform umbrella-module architecture for scalable, consistent multi-tenant and multi-environment provisioning.</li>
+            <li>Introduced ArgoCD for a true GitOps workflow: dev environments auto-update on every commit; production releases trigger only on Helm chart version or values-file changes.</li>
+            <li>Deployed and managed AKS with zone-aware node pools; integrated APISIX as the API Gateway with automated tenant onboarding.</li>
+            <li>Documented DNS changes, migration checklists, and operational runbooks to ensure team continuity.</li>
+            <li>Contributed to the company's C5 (BSI Cloud Computing Compliance Criteria Catalogue) compliance effort — infrastructure design, access controls, and operational processes.</li>
           </ul>
-          <p class="role-label">Achievements</p>
+        </article>
+
+        <article class="role">
+          <header>
+            <h3>doctorly — DevOps Team Lead</h3>
+            <p class="role-meta">Mar 2022 – Apr 2025 · Berlin, Germany</p>
+          </header>
+          <p>DevOps Lead &amp; Infrastructure Architect — led the design and delivery of doctorly's complete infrastructure and CI/CD ecosystem from the ground up, while driving the multi-tenancy initiative.</p>
+
+          <p class="role-label">Team leadership</p>
           <ul class="role-list">
-            <li>Implemented and optimised Kubernetes, Terraform, Ansible, AWS, Docker, and GitLab CI/CD.</li>
-            <li>Provided hands-on troubleshooting for Kubernetes clusters, Docker containers, and cloud resources.</li>
-            <li>Built and maintained vendor relationships, including contract negotiation.</li>
+            <li>Built and managed a 3–5 person team through structured standups, 1:1s, and retrospectives.</li>
+            <li>Spearheaded hiring and professional development to scale the team's technical capabilities.</li>
+          </ul>
+
+          <p class="role-label">Infrastructure</p>
+          <ul class="role-list">
+            <li>Owned the entire stack — AWS, Kubernetes, Terraform, Ansible — across 5 production environments.</li>
+            <li>Maintained infrastructure-as-code repos with rigorous standards.</li>
+            <li>Proactively managed technical modernisation (ingress → API Gateway migrations, Terraform module upgrades).</li>
+          </ul>
+
+          <p class="role-label">CI/CD &amp; security</p>
+          <ul class="role-list">
+            <li>Architected multi-stage GitLab CI/CD pipelines with SAST, dependency, secret, and container scanning.</li>
+            <li>Built custom CLI tooling to streamline day-to-day operations.</li>
+            <li>Deployed ArgoCD for GitOps-driven deployments.</li>
+          </ul>
+
+          <p class="role-label">Technical decision-making</p>
+          <ul class="role-list">
+            <li>Lead on Kubernetes, Terraform, Ansible, AWS, Docker, Linux, and Nginx.</li>
+            <li>Mentored the team on troubleshooting and incident response while balancing modernisation with stability.</li>
           </ul>
         </article>
 
@@ -654,11 +706,14 @@ git commit -m "Add Selected highlights section"
             <h3>serVme — Lead DevOps Engineer</h3>
             <p class="role-meta">Dec 2020 – Mar 2022 · Beirut, Lebanon</p>
           </header>
-          <p class="role-label">Responsibilities</p>
           <ul class="role-list">
-            <li>Transitioned a traditional architecture to fully automated CI/CD with EKS, Jenkins, and GitOps.</li>
-            <li>Designed resilient, scalable cloud infrastructure on AWS with horizontal and vertical autoscaling.</li>
-            <li>Reduced deployment time and AWS costs by optimising infrastructure and consolidating databases.</li>
+            <li>Migrated from a classic architecture to a fully automated CI/CD pipeline using EKS, Jenkins, and GitOps.</li>
+            <li>Designed a resilient architecture with horizontal and vertical autoscaling.</li>
+            <li>Managed, improved, and monitored cloud infrastructure on AWS using Terraform and CloudWatch.</li>
+            <li>Built and deployed Docker containers to break up a monolith into microservices, improving developer workflow, scalability, and speed.</li>
+            <li>Managed GitHub/Bitbucket repositories and permissions, including branching.</li>
+            <li>Reduced deployment time and AWS costs by eliminating unnecessary servers and consolidating databases.</li>
+            <li>Wrote Ansible playbooks to configure and manage servers.</li>
           </ul>
         </article>
 
@@ -667,9 +722,9 @@ git commit -m "Add Selected highlights section"
             <h3>CMA CGM — Digital Tech Lead</h3>
             <p class="role-meta">Feb 2020 – Nov 2020 · Beirut, Lebanon</p>
           </header>
-          <p class="role-label">Responsibilities</p>
           <ul class="role-list">
             <li>Led a team focused on software development, releases, and engineering delivery.</li>
+            <li>Hired and trained staff, delegated work, and partnered with colleagues on DevOps obstacles.</li>
             <li>Introduced Agile methodologies (Scrum and Kanban) and GitOps best practices.</li>
             <li>Hands-on with Docker and Kubernetes; defined the SDLC for smoother development workflows.</li>
           </ul>
@@ -677,38 +732,72 @@ git commit -m "Add Selected highlights section"
 
         <article class="role">
           <header>
-            <h3>Inimoney Fintech — Head of Quality Assurance</h3>
-            <p class="role-meta">Dec 2018 – Jan 2020 · Beirut, Lebanon</p>
+            <h3>Inimoney Fintech — Head of Quality Assurance / DevOps Team Lead</h3>
+            <p class="role-meta">Jul 2018 – Jan 2020 · Beirut, Lebanon</p>
           </header>
-          <p class="role-label">Responsibilities</p>
+          <p class="role-label">As Head of QA (Dec 2018 – Jan 2020)</p>
           <ul class="role-list">
-            <li>Collaborated with DevOps to optimise the CI/CD pipeline using automation tools.</li>
-            <li>Led and mentored the QA team, automating testing with Protractor and Newman.</li>
+            <li>Worked closely with DevOps and the testing team to define the optimal solution.</li>
+            <li>Owned QA operational requirements — scheduling, assignment, and follow-up on work results.</li>
+            <li>Built and maintained QA staff (DevOps and Test departments) via recruiting, orienting, and training.</li>
+            <li>Automated testing with Protractor and Newman for the CI/CD pipeline.</li>
+          </ul>
+          <p class="role-label">As DevOps Team Lead (Jul 2018 – Jan 2020)</p>
+          <ul class="role-list">
+            <li>Team management and mentoring — weekly standups, task assignment, and follow-up (Kanban in Jira).</li>
+            <li>Recruitment and team growth.</li>
+            <li>Created and maintained a fully automated CI/CD pipeline using Jenkins, Docker, Git, and Helm.</li>
+            <li>Managed cloud infrastructure on AWS (EC2, S3, RDS) — backups, patches, scaling.</li>
+            <li>Integrated security and compliance into the CI/CD pipeline; performed security scans.</li>
+            <li>Deployed Kubernetes clusters on AWS using Kubespray; monitored with Prometheus and Grafana.</li>
+            <li>Wrote Ansible playbooks (IaC) and managed GitHub repos, branching, webhooks, and GitOps best practices.</li>
+            <li>Kept documentation up to date in Confluence.</li>
           </ul>
         </article>
 
         <article class="role">
           <header>
-            <h3>Keeward Group — DevOps System Engineer</h3>
+            <h3>Keeward Group — DevOps System Engineer / IT Manager</h3>
             <p class="role-meta">Jun 2012 – Jun 2018 · Beirut, Lebanon</p>
           </header>
-          <p class="role-label">Achievements</p>
+          <p class="role-label">DevOps System Engineer</p>
           <ul class="role-list">
-            <li>Managed Linux servers and cloud infrastructure; designed a CI/CD pipeline for deployments.</li>
-            <li>Deployed and managed Docker containers, plus Redis and Varnish caching.</li>
-            <li>Migrated services to a hybrid cloud architecture across AWS, OVH, and Heroku.</li>
+            <li>Installed, configured, administered, and troubleshot Linux servers (Ansible-driven) running Apache/Nginx, Varnish/HAProxy, and Redis.</li>
+            <li>Designed, implemented, and maintained a dynamic infrastructure to support software development, test, and deployment (CI/CD).</li>
+            <li>Deployed caching solutions (Varnish, Redis, Nginx) and a Postfix/Dovecot mail server.</li>
+            <li>Monitored servers and network equipment using PingDom, NewRelic, DataDogHQ, Monit, Observium, and Nagios.</li>
+            <li>Built architectures on Debian/Ubuntu with virtualisation; configured Cisco network equipment (WAP4410N, C3560X, ASA 5505).</li>
+            <li>Ran a hybrid-cloud architecture across AWS, OVH, and Heroku.</li>
+            <li>Worked Agile/Scrum with Jira and Confluence; tooling: Ansible, GitLab, GitLab CI, Docker, Docker Compose.</li>
+          </ul>
+          <p class="role-label">IT Manager (parallel role)</p>
+          <ul class="role-list">
+            <li>Managed information technology and computer systems; planned, organised, and evaluated IT data operations.</li>
+            <li>Recruited, trained, and coached IT staff; communicated expectations and appraised performance.</li>
+            <li>Designed and coordinated IT systems, policies, and procedures; managed accounts and access lifecycle.</li>
+            <li>Ensured data security, network access, and backup integrity.</li>
+            <li>Handled annual budget and procurement, ensuring cost-effectiveness.</li>
           </ul>
         </article>
+
+        <h3 class="earlier-heading">Earlier roles</h3>
+        <ul class="earlier-list">
+          <li><strong>ARUMTEC</strong> — Linux System Engineer (for ESMA) · Jan 2012 – May 2012 · Paris, France</li>
+          <li><strong>Sollan</strong> — IT Manager · May 2010 – Dec 2011</li>
+          <li><strong>North Caspian Operating Company</strong> — Service Desk Administrator · Nov 2009 – May 2010</li>
+          <li><strong>Xnet Conseils</strong> — IT Manager · Sep 2008 – Sep 2009</li>
+          <li><strong>Orange Business Services</strong> — Network Support Technician · Jul 2008 – Aug 2008</li>
+          <li><strong>Lycée Sainte Thérèse</strong> — System and Network Administrator · Jan 2008 – Apr 2008</li>
+        </ul>
       </div>
     </section>
 ```
 
-- [ ] **Step 2: Append role styles**
+- [ ] **Step 2: Append role styles to `css/style.css`**
 
 ```css
 /* === Experience ============================================== */
 .role { padding: 24px 0; border-bottom: 1px solid var(--hairline); }
-.role:last-of-type { border-bottom: 0; padding-bottom: 0; }
 .role:first-of-type { padding-top: 0; }
 .role header { margin-bottom: 14px; }
 .role h3 { margin-bottom: 4px; }
@@ -724,27 +813,48 @@ git commit -m "Add Selected highlights section"
 .role-list { padding-left: 20px; list-style: disc; color: var(--text); }
 .role-list li { margin-bottom: 6px; font-size: 16px; }
 .role-list li::marker { color: var(--muted); }
+
+.earlier-heading {
+  margin-top: 32px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  font-weight: 600;
+}
+.earlier-list {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+.earlier-list li { color: var(--text); font-size: 15px; }
+.earlier-list strong { font-weight: 600; }
 ```
 
-- [ ] **Step 3: Verify all five roles are present**
+- [ ] **Step 3: Verify role counts**
 
 ```bash
 curl -s http://localhost:8080/ | grep -c '<article class="role">'
 ```
-Expected: `5`.
+Expected: `7`.
 
 ```bash
-curl -s http://localhost:8080/ | grep -E "doctorly|serVme|CMA CGM|Inimoney|Keeward" | wc -l | tr -d ' '
+curl -s http://localhost:8080/ | grep -F "Earlier roles"
 ```
-Expected: `5`.
+Expected: one matching line.
 
-Browser: roles are listed top-to-bottom, most recent first, each with title, dates, and bullets.
+```bash
+curl -s http://localhost:8080/ | sed -n '/earlier-list/,/<\/ul>/p' | grep -c '<li>'
+```
+Expected: `6`.
+
+Browser: 7 detailed role articles in reverse-chronological order, then an "Earlier roles" sub-heading with 6 single-line entries.
 
 - [ ] **Step 4: Commit**
 
 ```bash
 git add index.html css/style.css
-git commit -m "Add Experience section with all five roles"
+git commit -m "Add Experience section: 7 detailed roles + 6 earlier roles"
 ```
 
 ---
@@ -763,27 +873,31 @@ git commit -m "Add Experience section with all five roles"
         <div class="skills">
           <div class="skill-group">
             <p class="skill-label">Cloud</p>
-            <p>AWS</p>
+            <p>AWS, Azure</p>
           </div>
           <div class="skill-group">
-            <p class="skill-label">Orchestration</p>
-            <p>Kubernetes, Docker</p>
+            <p class="skill-label">Orchestration &amp; GitOps</p>
+            <p>Kubernetes (EKS, AKS), Docker, Helm, ArgoCD</p>
           </div>
           <div class="skill-group">
             <p class="skill-label">Infrastructure as code</p>
-            <p>Terraform, Ansible</p>
+            <p>Terraform (umbrella modules), Ansible</p>
           </div>
           <div class="skill-group">
-            <p class="skill-label">CI/CD &amp; GitOps</p>
-            <p>GitLab CI/CD, Jenkins, GitOps</p>
+            <p class="skill-label">CI/CD &amp; Security</p>
+            <p>GitLab CI/CD, GitHub Actions, Jenkins, SAST / dependency / secret / container scanning, C5 (BSI) compliance</p>
+          </div>
+          <div class="skill-group">
+            <p class="skill-label">Observability</p>
+            <p>Prometheus, Grafana, CloudWatch</p>
           </div>
           <div class="skill-group">
             <p class="skill-label">Systems</p>
-            <p>Linux administration, Git</p>
+            <p>Linux administration, Git, Nginx, APISIX</p>
           </div>
           <div class="skill-group">
             <p class="skill-label">Leadership</p>
-            <p>Team management, Agile (Scrum/Kanban), Hiring, Mentoring</p>
+            <p>Remote team management, Agile (Scrum/Kanban), Hiring, Mentoring, B2B engagements</p>
           </div>
         </div>
       </div>
@@ -819,7 +933,12 @@ git commit -m "Add Experience section with all five roles"
 ```bash
 curl -s http://localhost:8080/ | grep -c '<div class="skill-group">'
 ```
-Expected: `6`.
+Expected: `7`.
+
+```bash
+curl -s http://localhost:8080/ | grep -F "Azure"
+```
+Expected: at least one matching line (Azure appears in the hero chips and in Skills/Cloud).
 
 Browser: 2-column skills grid on desktop, single column under 560px.
 
@@ -832,41 +951,30 @@ git commit -m "Add Skills section"
 
 ---
 
-### Task 9: Education, Certifications, Languages
+### Task 9: Education + Languages (no Certifications section)
 
 **Files:**
 - Modify: `index.html`, `css/style.css`
+
+The Certifications heading and certifications block are intentionally omitted per the spec.
 
 - [ ] **Step 1: Append after Skills**
 
 ```html
     <section id="education" aria-labelledby="education-title">
       <div class="container">
-        <h2 id="education-title">Education &amp; Certifications</h2>
+        <h2 id="education-title">Education</h2>
 
-        <div class="edu-grid">
-          <div>
-            <p class="skill-label">Education</p>
-            <ul class="plain-list">
-              <li><strong>Conservatoire National des Arts et Métiers</strong> — Analysis and Conception of System Information and Decisions, Computer Science · 2008 – 2009</li>
-              <li><strong>IB Formation, France</strong> — VMware vSphere 4.1 · 2011</li>
-              <li><strong>DIAFOR, France</strong> — System and Network Administration · 2007 – 2008</li>
-              <li><strong>Université de Rennes I</strong> — DEUG, Science · 2003 – 2005</li>
-            </ul>
-          </div>
+        <ul class="plain-list">
+          <li><strong>Conservatoire National des Arts et Métiers</strong> — Analysis and Conception of System Information and Decisions, Computer Science · 2008 – 2009</li>
+          <li><strong>IB Formation, France</strong> — VMware vSphere 4.1 · 2011</li>
+          <li><strong>DIAFOR, France</strong> — System and Network Administration · 2007 – 2008</li>
+          <li><strong>Université de Rennes I</strong> — DEUG, Science · 2003 – 2005</li>
+          <li><strong>Collège De la Sagesse</strong> — High School Diploma, Mathematics · 1984 – 2001</li>
+        </ul>
 
-          <div>
-            <p class="skill-label">Certifications</p>
-            <ul class="pill-list" aria-label="Certifications">
-              <li>Linux Foundation Certified System Administrator (LFCS)</li>
-              <li>AWS Certified Solutions Architect – Associate</li>
-              <li>Certified Kubernetes Administrator (CKA)</li>
-            </ul>
-
-            <p class="skill-label" style="margin-top:24px">Languages</p>
-            <p><strong>Arabic</strong> (native) · <strong>French</strong> (native) · <strong>English</strong> (professional)</p>
-          </div>
-        </div>
+        <p class="skill-label" style="margin-top:28px">Languages</p>
+        <p><strong>Lebanese</strong> (native) · <strong>French</strong> (native) · <strong>English</strong> (professional working)</p>
       </div>
     </section>
 ```
@@ -874,47 +982,34 @@ git commit -m "Add Skills section"
 - [ ] **Step 2: Append styles**
 
 ```css
-/* === Education & certs ======================================= */
-.edu-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 32px;
-}
+/* === Education =============================================== */
 .plain-list li { margin-bottom: 12px; font-size: 15px; }
-.pill-list { display: flex; flex-wrap: wrap; gap: 8px; }
-.pill-list li {
-  font-size: 13px;
-  color: var(--text);
-  border: 1px solid var(--hairline);
-  background: var(--surface);
-  border-radius: 999px;
-  padding: 5px 12px;
-}
-
-@media (max-width: 720px) {
-  .edu-grid { grid-template-columns: 1fr; }
-}
 ```
 
-- [ ] **Step 3: Verify**
+- [ ] **Step 3: Verify there is no Certifications heading anywhere**
 
 ```bash
-curl -s http://localhost:8080/ | grep -c '<li>Linux Foundation Certified System Administrator (LFCS)</li>'
+curl -si http://localhost:8080/ | grep -ci "certification"
 ```
-Expected: `1`.
+Expected: `0`.
 
 ```bash
-curl -s http://localhost:8080/ | grep -F "Arabic"
+curl -s http://localhost:8080/ | grep -F "Collège De la Sagesse"
 ```
 Expected: one matching line.
 
-Browser: two-column layout on desktop (Education on the left, Certifications + Languages on the right), single column under 720px.
+```bash
+curl -s http://localhost:8080/ | grep -F "Lebanese"
+```
+Expected: one matching line.
+
+Browser: single-column Education list with five entries (CNAM, IB Formation, DIAFOR, Université de Rennes I, Collège De la Sagesse), followed by an inline "Languages" line — no Certifications heading anywhere.
 
 - [ ] **Step 4: Commit**
 
 ```bash
 git add index.html css/style.css
-git commit -m "Add Education, Certifications, and Languages"
+git commit -m "Add Education and Languages (no certifications block per spec)"
 ```
 
 ---
@@ -930,7 +1025,7 @@ git commit -m "Add Education, Certifications, and Languages"
     <section id="contact" aria-labelledby="contact-title">
       <div class="container">
         <h2 id="contact-title">Get in touch</h2>
-        <p>Open to senior DevOps and platform leadership conversations.</p>
+        <p>Open to DevOps Lead, Head of DevOps, and DevOps Architect roles — remote, hybrid, B2B or employee.</p>
         <div class="hero-cta" style="margin-top:24px">
           <a class="btn btn-primary"
              href="https://calendar.proton.me/bookings#Dv2Q_7jlUkUFkPm_nYaAfuSyQcXUWxr8x0z3WEYh89g="
@@ -987,12 +1082,12 @@ curl -s http://localhost:8080/ | grep -c "calendar.proton.me/bookings"
 Expected: `3` (nav + hero + contact).
 
 ```bash
-curl -s http://localhost:8080/ | grep -F "© 2026 Alain C."
+curl -s http://localhost:8080/ | grep -F "&copy; 2026 Alain C."
 ```
-Expected: one matching line (HTML entity `&copy;` is decoded by curl/grep? It will not be. Adjust to grep the entity):
+Expected: one matching line.
 
 ```bash
-curl -s http://localhost:8080/ | grep -F "&copy; 2026 Alain C."
+curl -s http://localhost:8080/ | grep -F "DevOps Lead, Head of DevOps, and DevOps Architect"
 ```
 Expected: one matching line.
 
@@ -1222,7 +1317,7 @@ git commit -m "Add skip-to-content link"
 - Modify: `index.html`
 - Create: `favicon.svg`
 
-- [ ] **Step 1: Create `favicon.svg`** (AC monogram on white, accent-stamped)
+- [ ] **Step 1: Create `favicon.svg`** (AC monogram on slate)
 
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AC">
@@ -1248,7 +1343,7 @@ Insert this block immediately **after** the existing `<meta name="description" .
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sys0dm1n.github.io/">
   <meta property="og:title" content="Alain C. — DevOps Team Lead">
-  <meta property="og:description" content="DevOps Team Lead with 10+ years building reliable cloud platforms and the teams behind them.">
+  <meta property="og:description" content="DevOps Team Lead with 15+ years building reliable cloud platforms and remote teams. Specialised in Remote DevOps & B2B.">
   <meta property="og:image" content="https://sys0dm1n.github.io/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -1256,7 +1351,7 @@ Insert this block immediately **after** the existing `<meta name="description" .
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Alain C. — DevOps Team Lead">
-  <meta name="twitter:description" content="DevOps Team Lead with 10+ years building reliable cloud platforms and the teams behind them.">
+  <meta name="twitter:description" content="DevOps Team Lead with 15+ years building reliable cloud platforms and remote teams. Specialised in Remote DevOps & B2B.">
   <meta name="twitter:image" content="https://sys0dm1n.github.io/og-image.png">
 ```
 
@@ -1322,15 +1417,15 @@ export CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
   }
   .eyebrow { font-size: 18px; letter-spacing: .22em; text-transform: uppercase; color: #475569; font-weight: 600; }
   h1 { font-size: 96px; font-weight: 700; letter-spacing: -0.02em; margin: 18px 0 12px; }
-  .sub { font-size: 32px; color: #0f172a; max-width: 920px; margin: 0; }
+  .sub { font-size: 30px; color: #0f172a; max-width: 920px; margin: 0; }
   .meta { font-size: 22px; color: #475569; margin-top: 28px; }
   .rule { height: 4px; width: 88px; background: #1d4ed8; margin-top: 36px; border-radius: 2px; }
 </style></head>
 <body>
   <p class="eyebrow">DevOps Team Lead</p>
   <h1>Alain C.</h1>
-  <p class="sub">Building reliable cloud platforms and the teams behind them.</p>
-  <p class="meta">Beirut · Berlin · 10+ years · AWS · Kubernetes · Terraform</p>
+  <p class="sub">Remote-first DevOps leadership. Building reliable cloud platforms — and the teams behind them.</p>
+  <p class="meta">Beirut · Berlin · 15+ years · AWS · Azure · Kubernetes · Terraform</p>
   <div class="rule"></div>
 </body></html>
 ```
@@ -1460,9 +1555,19 @@ For each box below, perform the check at `http://localhost:8080/` and check it o
 - [ ] Keyboard navigation: from a fresh page load, `Tab` reveals the skip link first; `Enter` jumps to main; subsequent tabs cycle through all interactive elements with a visible focus ring.
 - [ ] DevTools Console: no errors, no warnings (other than third-party GA notices).
 - [ ] DevTools Network: a request to `googletagmanager.com` or `google-analytics.com` is made on load.
-- [ ] View source (Ctrl/Cmd-U): no email address appears in the HTML.
+- [ ] View source: no email address or phone number appears in the HTML.
   ```bash
-  curl -s http://localhost:8080/ | grep -iE "mailto:|chemalyalain" | wc -l | tr -d ' '
+  curl -s http://localhost:8080/ | grep -iE "mailto:|chemalyalain|tel:|009617" | wc -l | tr -d ' '
+  ```
+  Expected: `0`.
+- [ ] Experience contains 7 detailed roles + 6 condensed earlier roles:
+  ```bash
+  curl -s http://localhost:8080/ | grep -c '<article class="role">'
+  ```
+  Expected: `7`.
+- [ ] No Certifications heading or pill list appears:
+  ```bash
+  curl -si http://localhost:8080/ | grep -ci "certification"
   ```
   Expected: `0`.
 - [ ] OG image present and correct size:
@@ -1504,9 +1609,9 @@ Verify the PR diff matches expectations: `_config.yml` and `index.md` deleted; n
 
 ## Self-review (post-write)
 
-- **Spec coverage:** every section in the spec maps to a task — sticky nav (3), hero (4), about+stats (5), highlights (6), experience (7), skills (8), education+certs+languages (9), contact+footer (10); booking button bot-safe wiring (3/4/10); design tokens (2); a11y/SEO/ops (13/14/17); favicon (14); OG image (15); 404 (16); manual verification (17). Jekyll removal handled in (1).
+- **Spec coverage:** every section in the updated spec maps to a task — sticky nav (3), hero with 15+ years / Azure / ArgoCD chips (4), about + concrete-impact stats (5), 4 quantified highlights (6), 7 detailed + 6 condensed roles in experience (7), 7-group skills (8), education without certifications + Lebanese languages line (9), contact + footer with the new closing line (10); booking button bot-safe wiring (3/4/10); design tokens (2); a11y/SEO/ops (13/14/17); favicon (14); OG image with updated subhead (15); 404 (16); manual verification (17). Jekyll removal handled in (1).
 - **Placeholder scan:** no "TBD", "TODO", or vague directives. Every code step contains the actual code or command.
-- **Type/name consistency:** CSS class names used in HTML (`brand`, `nav`, `nav-toggle`, `nav-menu`, `data-menu`, `chips`, `hero-cta`, `card`, `cards`, `role`, `role-list`, `role-label`, `skill-group`, `skill-label`, `plain-list`, `pill-list`, `edu-grid`, `site-footer`, `footer-row`, `skip-link`, `reveal`, `is-revealed`) match their CSS rules. The data-attribute selector `[data-menu]` used by the JS in Task 11 is set on the `<ul>` in Task 3. The `BOOKING_URL` value is identical in all three places (nav, hero, contact). GA tag `G-XH22477GS5` appears in both `index.html` (Task 1) and `404.html` (Task 16).
+- **Type/name consistency:** CSS class names used in HTML (`brand`, `nav`, `nav-toggle`, `nav-menu`, `data-menu`, `chips`, `hero-cta`, `card`, `cards`, `role`, `role-list`, `role-label`, `earlier-heading`, `earlier-list`, `skill-group`, `skill-label`, `plain-list`, `footer-row`, `skip-link`, `reveal`, `is-revealed`) match their CSS rules. The `pill-list` class is removed everywhere along with the Certifications block. The data-attribute selector `[data-menu]` used by the JS in Task 11 is set on the `<ul>` in Task 3. The `BOOKING_URL` value is identical in all three places (nav, hero, contact). GA tag `G-XH22477GS5` appears in both `index.html` (Task 1) and `404.html` (Task 16). The verification checks in Task 17 reflect the absence of any certifications heading.
 
 ---
 
