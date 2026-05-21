@@ -243,3 +243,37 @@ section + section { border-top: 1px solid var(--hairline); }
 @media (max-width: 720px) {
   .cards { grid-template-columns: 1fr; }
 }
+
+/* === Experience ============================================== */
+.role { padding: 24px 0; border-bottom: 1px solid var(--hairline); }
+.role:first-of-type { padding-top: 0; }
+.role header { margin-bottom: 14px; }
+.role h3 { margin-bottom: 4px; }
+.role-meta { margin: 0; color: var(--muted); font-size: 14px; }
+.role-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-weight: 600;
+  margin: 14px 0 8px;
+}
+.role-list { padding-left: 20px; list-style: disc; color: var(--text); }
+.role-list li { margin-bottom: 6px; font-size: 16px; }
+.role-list li::marker { color: var(--muted); }
+
+.earlier-heading {
+  margin-top: 32px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  font-weight: 600;
+}
+.earlier-list {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+.earlier-list li { color: var(--text); font-size: 15px; }
+.earlier-list strong { font-weight: 600; }
