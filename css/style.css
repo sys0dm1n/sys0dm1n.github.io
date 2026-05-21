@@ -1,10 +1,10 @@
 /* === Design tokens =========================================== */
 :root {
-  --bg: #ffffff;
-  --surface: #f8fafc;
+  --bg: #dde6f1;
+  --surface: #ffffff;
   --text: #0f172a;
   --muted: #475569;
-  --hairline: #e2e8f0;
+  --hairline: #c7d3e3;
   --accent: #1d4ed8;
   --accent-ink: #ffffff;
 
