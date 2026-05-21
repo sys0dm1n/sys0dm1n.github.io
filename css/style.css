@@ -297,3 +297,6 @@ section + section { border-top: 1px solid var(--hairline); }
 @media (max-width: 560px) {
   .skills { grid-template-columns: 1fr; }
 }
+
+/* === Education =============================================== */
+.plain-list li { margin-bottom: 12px; font-size: 15px; }
