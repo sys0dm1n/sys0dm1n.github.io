@@ -277,3 +277,23 @@ section + section { border-top: 1px solid var(--hairline); }
 }
 .earlier-list li { color: var(--text); font-size: 15px; }
 .earlier-list strong { font-weight: 600; }
+
+/* === Skills ================================================== */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 32px;
+}
+.skill-group p { margin: 0; }
+.skill-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 4px !important;
+}
+
+@media (max-width: 560px) {
+  .skills { grid-template-columns: 1fr; }
+}
