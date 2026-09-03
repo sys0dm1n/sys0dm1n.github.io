@@ -1,0 +1,187 @@
+# Alain C. — DevOps Team Lead
+
+> DevOps Team Lead and Infrastructure Architect with 15+ years building reliable cloud
+> platforms and leading fully remote engineering teams across Europe and the Middle East.
+> Also an agentic engineering practitioner: builds custom AI agents, Claude Code skills, and
+> Model Context Protocol (MCP) integrations that automate ticket refinement, code review, and
+> infrastructure analysis. Based between Beirut and Berlin. Open to DevOps Lead, Head of
+> DevOps, and DevOps Architect roles — remote or hybrid, B2B contract or employee.
+
+This file is a plain-text summary of https://sys0dm1n.github.io/ for AI agents and
+language models. It mirrors the full content of the site's single page.
+
+- Website: https://sys0dm1n.github.io/
+- LinkedIn: https://www.linkedin.com/in/alainch
+- GitHub: https://github.com/sys0dm1n
+- Book a meeting: https://calendar.proton.me/bookings#Dv2Q_7jlUkUFkPm_nYaAfuSyQcXUWxr8x0z3WEYh89g=
+- Languages: Lebanese (native), French (native), English (professional working)
+- Last updated: 2026-09-03
+
+## Summary
+
+DevOps Team Lead with 15+ years building and leading high-performing remote teams across
+Europe and the Middle East. Turns infrastructure into a competitive advantage — automating
+CI/CD pipelines, scaling cloud environments on AWS and Azure, and enabling development
+teams to ship faster with confidence. Remote-first by design: leads fully distributed teams
+across time zones on a foundation of trust, async communication, and strong engineering
+culture. Also builds the AI tooling those teams run on — custom agents and Claude Code skills
+wired into Linear, GitLab, AWS, and Kubernetes over MCP, operating under least-privilege tool
+scopes so automation never holds a write path to production, with every AI-assisted change
+traceable to a ticket.
+
+## Selected achievements
+
+- Cut deployment cycles from 1 month to 2 days by replacing manual release processes with
+  automated CI/CD and GitOps.
+- Reduced recurring AWS spend by ~40% through right-sized compute, consolidated databases,
+  and pruning unused services.
+- Reduced downtime by 50% and improved availability by 80% via resilient architecture,
+  autoscaling, and proactive operations.
+- Built and led distributed DevOps teams from the ground up — hiring, structured 1:1s,
+  retrospectives, and mentoring focused on engineer ownership.
+- Delivered compliance-ready infrastructure aligned with C5 (BSI Cloud Computing Compliance
+  Criteria Catalogue) and ISO 27001, meeting the bar for regulated B2B and healthcare
+  deployments.
+
+## AI and agentic engineering
+
+Runs AI agents as production tooling, not as a demo. Builds and maintains the agent layer of a
+live infrastructure repository — custom subagents, skills, and Model Context Protocol (MCP)
+integrations that encode team process as executable, version-controlled workflows. The design
+rule is the one already applied to infrastructure: least privilege and separation of duties.
+Agents that review never hold write access, and agents that author are audited by a different
+agent before anything reaches production.
+
+- A fleet of purpose-built infrastructure agents: seven custom subagents for a production
+  infrastructure repo — Terraform, Ansible, ArgoCD, and general DevOps specialists, each
+  scoped to its own tools and source-of-truth docs. Authoring and review are deliberately
+  separate agents: one writes the HCL, another audits it for state safety, blast radius, and
+  least-privilege IAM before any apply.
+- Multi-agent review against live infrastructure: a review skill fans out five reviewers in
+  parallel — Terraform, Ansible, security, architecture, and conventions-versus-ticket
+  completeness — then merges them into a single report. Verification agents run repo lint plus
+  read-only AWS and kubectl queries, so findings are checked against real cluster state rather
+  than the text of the diff.
+- Least privilege, enforced in configuration: every agent and skill declares an explicit tool
+  allowlist. The review pipeline is granted read verbs only — describe, get, list, logs — and
+  is hard-blocked from write and edit tools entirely, so an agent can inspect production
+  without ever holding a path to change it.
+- Governance and auditability for AI-assisted work: the repo's agent configuration is a source
+  of truth under version control — a maintained operating policy, documented conventions, and
+  a session-start hook that requires every AI session to be tied to a Linear or Jira ticket,
+  so AI-assisted changes stay exactly as traceable as any other change.
+- Automating the GitOps onboarding path: an onboarding skill walks a new service through the
+  full CD path — registering ArgoCD applications for dev and production, wiring CI's image-tag
+  write-back into values, publishing OCI Helm charts and images to ECR, and setting up
+  semantic-release publish workflows.
+- Rolling it out to the team: documented and standardised the MCP setup — Linear, Notion, the
+  AWS Agent Toolkit, Terraform registry resolution, and diagram rendering — so the whole team
+  runs the same agents against the same shared context instead of each engineer improvising
+  their own prompts.
+
+## Experience
+
+### doctorly — DevOps Team Lead (Feb 2026 – Present, Berlin, Germany)
+Returned to doctorly to continue evolving the platform built during the 2022–2025 stint:
+Kubernetes on AWS, multi-environment Terraform, GitLab CI/CD with security scanning, and
+ArgoCD-driven deployments.
+
+### CompuGroup Medical SE & Co. KGaA — DevOps Tech Lead (May 2025 – Jan 2026, Germany)
+- Built the Azure cloud infrastructure entirely from scratch.
+- Designed a Terraform umbrella-module architecture for scalable, consistent multi-tenant
+  and multi-environment provisioning.
+- Introduced ArgoCD for a true GitOps workflow: dev environments auto-update on every
+  commit; production releases trigger only on Helm chart version or values-file changes.
+- Deployed and managed AKS with zone-aware node pools; integrated APISIX as the API Gateway
+  with automated tenant onboarding.
+- Documented DNS changes, migration checklists, and operational runbooks for team continuity.
+- Contributed to the company's C5 (BSI) compliance effort — infrastructure design, access
+  controls, and operational processes.
+
+### doctorly — DevOps Team Lead (Mar 2022 – Apr 2025, Berlin, Germany)
+DevOps Lead and Infrastructure Architect. Led the design and delivery of doctorly's complete
+infrastructure and CI/CD ecosystem from the ground up, while driving the multi-tenancy
+initiative.
+- Team leadership: built and managed a 3–5 person team through structured standups, 1:1s,
+  and retrospectives; spearheaded hiring and professional development.
+- Infrastructure: owned the entire stack — AWS, Kubernetes, Terraform, Ansible — across 5
+  production environments; maintained infrastructure-as-code repositories with rigorous
+  standards; drove technical modernisation (ingress to API Gateway migrations, Terraform
+  module upgrades).
+- CI/CD and security: architected multi-stage GitLab CI/CD pipelines with SAST, dependency,
+  secret, and container scanning; built custom CLI tooling; deployed ArgoCD for GitOps.
+- Technical decision-making: lead on Kubernetes, Terraform, Ansible, AWS, Docker, Linux, and
+  Nginx; mentored the team on troubleshooting and incident response.
+
+### serVme — Lead DevOps Engineer (Dec 2020 – Mar 2022, Beirut, Lebanon)
+- Migrated from a classic architecture to a fully automated CI/CD pipeline using EKS,
+  Jenkins, and GitOps.
+- Designed a resilient architecture with horizontal and vertical autoscaling.
+- Managed and monitored AWS infrastructure using Terraform and CloudWatch.
+- Broke up a monolith into Docker-based microservices, improving developer workflow,
+  scalability, and speed.
+- Reduced deployment time and AWS costs by eliminating unnecessary servers and consolidating
+  databases; wrote Ansible playbooks for server configuration.
+
+### CMA CGM — Digital Tech Lead (Feb 2020 – Nov 2020, Beirut, Lebanon)
+- Led a team focused on software development, releases, and engineering delivery.
+- Hired and trained staff; partnered with colleagues on DevOps obstacles.
+- Introduced Agile methodologies (Scrum and Kanban) and GitOps best practices.
+- Hands-on with Docker and Kubernetes; defined the SDLC for smoother development workflows.
+
+### Inimoney Fintech — Head of Quality Assurance / DevOps Team Lead (Jul 2018 – Jan 2020, Beirut, Lebanon)
+- As Head of QA (Dec 2018 – Jan 2020): defined QA solutions with DevOps and testing teams,
+  owned QA operational requirements, built and trained QA staff, and automated testing with
+  Protractor and Newman in the CI/CD pipeline.
+- As DevOps Team Lead (Jul 2018 – Jan 2020): team management and mentoring, recruitment,
+  a fully automated CI/CD pipeline using Jenkins, Docker, Git, and Helm, AWS infrastructure
+  (EC2, S3, RDS), security and compliance scanning in CI/CD, Kubernetes clusters on AWS via
+  Kubespray monitored with Prometheus and Grafana, Ansible playbooks, and GitOps practices.
+
+### Keeward Group — DevOps System Engineer / IT Manager (Jun 2012 – Jun 2018, Beirut, Lebanon)
+- DevOps System Engineer: administered Ansible-driven Linux servers running Apache/Nginx,
+  Varnish/HAProxy, and Redis; built and maintained dynamic CI/CD infrastructure; deployed
+  caching (Varnish, Redis, Nginx) and a Postfix/Dovecot mail server; monitored with PingDom,
+  NewRelic, DataDogHQ, Monit, Observium, and Nagios; ran a hybrid-cloud architecture across
+  AWS, OVH, and Heroku; configured Cisco network equipment.
+- IT Manager (parallel role): managed IT systems, policies, and procedures; recruited,
+  trained, and coached IT staff; ensured data security, network access, and backup
+  integrity; handled annual budget and procurement.
+
+### Earlier roles
+- ARUMTEC — Linux System Engineer (for ESMA), Jan 2012 – May 2012, Paris, France
+- Sollan — IT Manager, May 2010 – Dec 2011
+- North Caspian Operating Company — Service Desk Administrator, Nov 2009 – May 2010
+- Xnet Conseils — IT Manager, Sep 2008 – Sep 2009
+- Orange Business Services — Network Support Technician, Jul 2008 – Aug 2008
+- Lycée Sainte Thérèse — System and Network Administrator, Jan 2008 – Apr 2008
+
+## Skills
+
+- Cloud: AWS, Azure
+- Orchestration and GitOps: Kubernetes (EKS, AKS), Docker, Helm, ArgoCD
+- Infrastructure as code: Terraform (umbrella modules), Ansible
+- CI/CD and security: GitLab CI/CD, GitHub Actions, Jenkins, SAST, dependency scanning,
+  secret scanning, container scanning, C5 (BSI) compliance
+- Observability: Prometheus, Grafana, CloudWatch
+- Systems: Linux administration, Git, Nginx, APISIX
+- AI and agentic engineering: Claude Code skills, subagents and hooks, MCP server
+  integrations (Linear, Notion, AWS Agent Toolkit), agent tool-scoping and least-privilege
+  automation, multi-agent code review, prompt and context engineering, GraphRAG and knowledge
+  graphs
+- Leadership: remote team management, Agile (Scrum/Kanban), hiring, mentoring, B2B engagements
+
+## Education
+
+- Conservatoire National des Arts et Métiers — Analysis and Conception of System Information
+  and Decisions, Computer Science (2008–2009)
+- IB Formation, France — VMware vSphere 4.1 (2011)
+- DIAFOR, France — System and Network Administration (2007–2008)
+- Université de Rennes I — DEUG, Science (2003–2005)
+- Collège De la Sagesse — High School Diploma, Mathematics (1984–2001)
+
+## Contact
+
+Open to DevOps Lead, Head of DevOps, and DevOps Architect roles — remote, hybrid, B2B or
+employee. Book a meeting:
+https://calendar.proton.me/bookings#Dv2Q_7jlUkUFkPm_nYaAfuSyQcXUWxr8x0z3WEYh89g=
